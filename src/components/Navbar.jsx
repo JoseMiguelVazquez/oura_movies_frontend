@@ -17,31 +17,36 @@ const Navbar = () => {
 
   return (
     <>
-      <nav>
-        <div>
-            <NavLink to='/'>Oura Movies</NavLink>
+      <nav className='navbar navbar-expand-sm bg-body-tertiary'>
+        <div className='container-fluid'>
+            <NavLink to='/' className='navbar-brand'>Oura Movies</NavLink>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul className='navbar-nav'>
+                    {user ? (
+                        <>
+                            <li className='nav-item'>
+                                Hello, {user.name}
+                            </li>
+                            <li className='nav-item'>
+                                <button onClick={onLogout} className='nav-link'>Logout</button>
+                            </li>
+                        </>
+                    ) : (
+                        <>
+                            <li className='nav-item'>
+                                <NavLink to='/login' className='nav-link'>Login</NavLink>
+                            </li>
+                            <li className='nav-item'>
+                                <NavLink to='/signup' className='nav-link'>Sign Up</NavLink>
+                            </li>
+                        </>
+                    )}
+                </ul>
+            </div>
         </div>
-        <ul>
-            {user ? (
-                <>
-                    <li>
-                        Hello, {user.name}
-                    </li>
-                    <li>
-                        <button onClick={onLogout}>Logout</button>
-                    </li>
-                </>
-            ) : (
-                <>
-                    <li>
-                        <NavLink to='/login'>Login</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/signup'>Sign Up</NavLink>
-                    </li>
-                </>
-            )}
-        </ul>
       </nav>
     </>
   )
