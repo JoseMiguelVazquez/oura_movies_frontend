@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { login, reset } from '../features/auth/authSlice'
+import Spinner from '../components/Spinner'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -42,15 +43,15 @@ const Login = () => {
   }, [user, isError, isSuccess, message, dispatch, navigate])
 
   if(isLoading) {
-    return <h1>Loading</h1>
+    return <Spinner />
   }
 
 
   return (
-    <>
+    <div className="container">
       <section>
-        <h4>Login</h4>
-        <p>Please input your credentials.</p>
+        <h1>Login</h1>
+        <h4>Please input your credentials.</h4>
       </section>
       <section>
         <form onSubmit={onSubmit}>
@@ -62,6 +63,7 @@ const Login = () => {
               value={formData.email}
               placeholder="Please write your email"
               onChange={onChange}
+              className="form-control mb-3"
             />
             <input
               type="password"
@@ -70,14 +72,15 @@ const Login = () => {
               value={formData.password}
               placeholder="Please write your password"
               onChange={onChange}
+              className="form-control mb-3"
             />
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-secondary">Submit</button>
           </div>
         </form>
       </section>
-    </>
+    </div>
   )
 }
 
