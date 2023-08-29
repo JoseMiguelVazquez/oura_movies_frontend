@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { getMovies, reset } from "../features/movies/movieSlice"
 import Spinner from '../components/Spinner'
+import MovieCard from "../components/MovieCard"
 
 const Home = () => {
   const navigate = useNavigate()
@@ -37,17 +38,13 @@ const Home = () => {
       <h1>Oura Movies</h1>
       <section>
         {movies.length > 0 ? (
-          <div>
+          <div className="d-flex row">
             {movies.map((movie)=>(
-              //comienza el componente
-              <div>
-                <h2>{movie.title}</h2>
-                <img src={movie.backdrop_url} alt="backdrop" />
-              </div>
+              <MovieCard movie={movie} key={movie._id} />
             ))}
           </div>
         ) : (
-          <h3>There are not tasks for this user</h3>
+          <h3>Oops! Looks like there are not movies, add one</h3>
         )}
       </section>
     </div>
