@@ -50,10 +50,10 @@ export const deleteMovie = createAsyncThunk('movies/delete', async (id, thunkAPI
 })
 
 //modificar likes de una pelicula
-export const updateLikes = createAsyncThunk('movies/likes', async (likes, id, thunkAPI) => {
+export const updateLikes = createAsyncThunk('movies/likes', async (info, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await movieService.updateLikes(likes, id, token)
+        return await movieService.updateLikes(info.likes, info.id, token)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)
         || error.message
@@ -115,7 +115,7 @@ export const movieSlice = createSlice({
         .addCase(updateLikes.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
-            const movieId = state.movies.findIndex((movie => movie._id === action.payload.id))
+            const movieId = state.movies.findIndex((movie => movie._id === action.payload._id))
             state.movies[movieId] = action.payload
         })
         .addCase(updateLikes.rejected, (state, action) => {

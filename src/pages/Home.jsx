@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { getMovies, reset } from "../features/movies/movieSlice"
@@ -10,6 +10,12 @@ const Home = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.auth)
   const { movies, isLoading, isError, message } = useSelector((state) => state.movie)
+  const [ moviesLoading, setMoviesLoading ] = useState(true)
+
+  const getAllMovies = async () => {
+    await dispatch(getMovies())
+    setMoviesLoading(false)
+  }
 
   useEffect(() => {
     if(isError) {
@@ -19,7 +25,7 @@ const Home = () => {
     if(!user) {
       navigate('/login')
     } else {
-      dispatch(getMovies())
+      getAllMovies()
     }
 
     return ()=> {
@@ -28,7 +34,7 @@ const Home = () => {
 
   }, [user, navigate, isError, message, dispatch])
 
-  if(isLoading) {
+  if(moviesLoading) {
     return <Spinner/>
   }
 
