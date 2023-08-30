@@ -30,6 +30,9 @@ const Navbar = () => {
                             <li className='nav-item'>
                                 Hello, {user.name}
                             </li>
+                            <li>
+                                <NavLink to='/newMovie' className='nav-link'>Add Movie</NavLink>
+                            </li>
                             <li className='nav-item'>
                                 <button onClick={onLogout} className='nav-link'>Logout</button>
                             </li>

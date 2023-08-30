@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import SignUp from "./pages/SignUp"
 import Login from './pages/Login'
+import AddMovie from "./pages/AddMovie"
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/newMovie" element={<AddMovie />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
