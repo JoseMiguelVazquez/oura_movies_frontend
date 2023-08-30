@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { getMovies, reset } from "../features/movies/movieSlice"
 import Spinner from '../components/Spinner'
 import MovieCard from "../components/MovieCard"
+import { Link } from "react-router-dom"
 
 const Home = () => {
   const navigate = useNavigate()
@@ -50,7 +51,7 @@ const Home = () => {
             ))}
           </div>
         ) : (
-          <h3>Oops! Looks like there are not movies, add one</h3>
+          <h3>Oops! Looks like there are not movies, <Link to='/newMovie' className="link-underline-light">add one</Link></h3>
         )}
       </section>
     </div>

@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { updateLikes, deleteMovie } from "../features/movies/movieSlice"
+import { Link } from "react-router-dom"
 
 
 const MovieCard = ({movie}) => {
@@ -12,15 +13,17 @@ const MovieCard = ({movie}) => {
 
   return (
     <div className="card col-3" style={{'width': '18rem'}}>
+      <Link to={`/movies/${movie._id}`}>
         <img src={movie.backdrop_url} className="card-img-top" alt="backdrop" />
-            <div className="card-body">
-                <h5 className="card-title">{movie.title}</h5>
-                <p className="card-text">{movie.overview}</p>
-                <div>
-                  <button className="btn btn-primary" onClick={onLike}>Like: {movie.likes}</button>
-                  <button className="btn btn-danger" onClick={() => dispatch(deleteMovie(movie._id))}>Delete</button>
-                </div>
-            </div>
+      </Link>
+      <div className="card-body">
+          <h5 className="card-title">{movie.title}</h5>
+          {/* <p className="card-text">{movie.overview}</p> */}
+          <div>
+            <button className="btn btn-primary" onClick={onLike}>Like: {movie.likes}</button>
+            <button className="btn btn-danger" onClick={() => dispatch(deleteMovie(movie._id))}>Delete</button>
+          </div>
+      </div>
     </div>
   )
 }

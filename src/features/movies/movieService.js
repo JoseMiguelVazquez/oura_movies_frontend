@@ -46,11 +46,23 @@ const updateLikes = async (likes, id, token) => {
     return response.data
 }
 
+//obtener una pelicula con su id (solo usuarios logueados)
+const getOneMovie = async (id, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    const response = await axios.get(API_URL + id, config)
+    return response.data
+}
+
 const movieService = {
     addMovie,
     deleteMovie,
     getMovies,
-    updateLikes
+    updateLikes,
+    getOneMovie
 }
 
 export default movieService

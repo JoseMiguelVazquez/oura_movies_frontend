@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import SignUp from "./pages/SignUp"
 import Login from './pages/Login'
 import AddMovie from "./pages/AddMovie"
+import MovieDetails from "./pages/movieDetails"
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/newMovie" element={<AddMovie />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
