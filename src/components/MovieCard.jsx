@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { updateLikes } from "../features/movies/movieSlice"
+import { updateLikes, deleteMovie } from "../features/movies/movieSlice"
 
 
 const MovieCard = ({movie}) => {
@@ -16,7 +16,10 @@ const MovieCard = ({movie}) => {
             <div className="card-body">
                 <h5 className="card-title">{movie.title}</h5>
                 <p className="card-text">{movie.overview}</p>
-                <button className="btn btn-primary" onClick={onLike}>Like: {movie.likes}</button>
+                <div>
+                  <button className="btn btn-primary" onClick={onLike}>Like: {movie.likes}</button>
+                  <button className="btn btn-danger" onClick={() => dispatch(deleteMovie(movie._id))}>Delete</button>
+                </div>
             </div>
     </div>
   )
