@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='navbar navbar-expand-sm bg-body-tertiary'>
+      <nav className='navbar navbar-expand-sm bg-body-tertiary position-absolute top-0 w-100 dark-color-text'>
         <div className='container-fluid'>
             <NavLink to='/' className='navbar-brand'>Oura Movies</NavLink>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,17 +26,19 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className='navbar-nav'>
                     {user ? (
-                        <>
-                            <li className='nav-item'>
-                                Hello, {user.name}
-                            </li>
+                        <div className='d-flex flex-column align-items-sm-center flex-sm-row'>
                             <li>
                                 <NavLink to='/newMovie' className='nav-link'>Add Movie</NavLink>
                             </li>
                             <li className='nav-item'>
                                 <button onClick={onLogout} className='nav-link'>Logout</button>
                             </li>
-                        </>
+                            <div className='d-flex align-items-center position-absolute end-0 me-3 mt-3 mt-sm-0'>
+                                <p className='nav-item m-0'>
+                                    Hello, {user.name}
+                                </p>
+                            </div>
+                        </div>
                     ) : (
                         <>
                             <li className='nav-item'>

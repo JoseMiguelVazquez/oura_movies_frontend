@@ -23,14 +23,15 @@ const MovieDetails = () => {
   }
 
   return (
-    <div className="container">
-      <h1>{movie.title}</h1>
-      <div className="d-flex align-items-center">
-        <img src={movie.poster_url} className="col-6" alt="poster" />
-        <div>
-            <h4>Release Date: {movie.release_date}</h4>
-            <h5>Likes: {movie.likes}</h5>
-            <p>{movie.overview}</p>
+    <div className="container h-100 d-flex flex-column justify-content-center text-center w-75 light-color-text">
+      <div className="border-light">
+        <h1>{movie.title}</h1>
+        <div className="d-flex flex-column flex-lg-row align-items-center">
+          <img src={movie.poster_url} className="col-10 col-md-7 col-lg-5 col-xl-4 mb-3 mx-lg-2" alt="poster" />
+          <div className="mx-lg-2">
+              <h5 className="mb-3">Likes: {movie.likes}</h5>
+              <p className="text-start">{movie.overview}</p>
+          </div>
         </div>
       </div>
     </div>

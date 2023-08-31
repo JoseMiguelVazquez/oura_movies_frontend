@@ -48,38 +48,40 @@ const Login = () => {
 
 
   return (
-    <div className="container">
-      <section>
-        <h1>Login</h1>
-        <h4>Please input your credentials.</h4>
-      </section>
-      <section>
-        <form onSubmit={onSubmit}>
-          <div>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              placeholder="Please write your email"
-              onChange={onChange}
-              className="form-control mb-3"
-            />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              placeholder="Please write your password"
-              onChange={onChange}
-              className="form-control mb-3"
-            />
-          </div>
-          <div>
-            <button type="submit" className="btn btn-secondary">Submit</button>
-          </div>
-        </form>
-      </section>
+    <div className="container h-100 d-flex flex-column justify-content-center text-center align-items-center">
+      <div className="border-light w-75">
+        <section className="light-color-text my-2">
+          <h1>Login</h1>
+          <h4>Please input your credentials.</h4>
+        </section>
+        <section className="mb-4">
+          <form onSubmit={onSubmit}>
+            <div className="d-flex flex-column align-items-center">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                placeholder="Please write your email"
+                onChange={onChange}
+                className="form-control mb-3 w-75"
+              />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                placeholder="Please write your password"
+                onChange={onChange}
+                className="form-control mb-3 w-75"
+              />
+            </div>
+            <div>
+              <button type="submit" className="btn btn-secondary w-75">Submit</button>
+            </div>
+          </form>
+        </section>
+      </div>
     </div>
   )
 }

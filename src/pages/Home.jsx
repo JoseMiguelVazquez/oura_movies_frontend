@@ -36,22 +36,24 @@ const Home = () => {
   }, [user, navigate, isError, message, dispatch])
 
   if(moviesLoading) {
-    return <Spinner/>
+    return (
+        <Spinner/>
+    )
   }
 
 
   return (
-    <div className="container">
-      <h1>Oura Movies</h1>
+    <div className="container text-center" id="home-page">
+      <h1 className="light-color-text">Home</h1>
       <section>
         {movies.length > 0 ? (
-          <div className="d-flex row">
+          <div className="d-flex row justify-content-center">
             {movies.map((movie)=>(
               <MovieCard movie={movie} key={movie._id} />
             ))}
           </div>
         ) : (
-          <h3>Oops! Looks like there are not movies, <Link to='/newMovie' className="link-underline-light">add one</Link></h3>
+          <h3 className="light-color-text">Oops! Looks like there are not movies, <Link to='/newMovie' className="link-underline-light light-color-text">add one</Link></h3>
         )}
       </section>
     </div>
